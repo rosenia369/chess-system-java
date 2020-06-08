@@ -15,7 +15,6 @@ public class ChessMoves extends ChessPiece {
 	public boolean[][] rookMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		Position p = new Position(0, 0);
-		System.out.println("(position.getRow() " + position.getRow() + "position.getColumn() " + position.getColumn());
 		p.setValues(position.getRow() - 1, position.getColumn());
 		// Above
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
@@ -45,6 +44,9 @@ public class ChessMoves extends ChessPiece {
 			mat[p.getRow()][p.getColumn()] = true;
 			p.setColumn(p.getColumn() + 1);
 		}
+		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+			
 		// Below
 		p.setValues(position.getRow() + 1, position.getColumn());
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
@@ -53,7 +55,7 @@ public class ChessMoves extends ChessPiece {
 		}
 
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-			mat[p.getRow()][p.getColumn()] = true;
+			mat[p.getRow()][p.getColumn()] = true; }
 
 		}
 		return mat;
