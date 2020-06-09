@@ -11,7 +11,8 @@ public class ChessMoves extends ChessPiece {
 		this.position = position;
 
 	}
-   // Possible Rook moves
+
+	// Possible Rook moves
 	public boolean[][] rookMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		Position p = new Position(0, 0);
@@ -46,7 +47,8 @@ public class ChessMoves extends ChessPiece {
 		}
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
-			
+		}
+
 		// Below
 		p.setValues(position.getRow() + 1, position.getColumn());
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
@@ -55,12 +57,13 @@ public class ChessMoves extends ChessPiece {
 		}
 
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-			mat[p.getRow()][p.getColumn()] = true; }
-
+			mat[p.getRow()][p.getColumn()] = true;
 		}
+
 		return mat;
 	}
-  // Possible Rook Bishop moves
+
+	// Possible Rook Bishop moves
 	public boolean[][] bishopMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		Position p = new Position(0, 0);
@@ -69,7 +72,7 @@ public class ChessMoves extends ChessPiece {
 		// nw
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
-			p.setValues(p.getRow() - 1, p.getColumn()-1);
+			p.setValues(p.getRow() - 1, p.getColumn() - 1);
 		}
 
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
@@ -92,7 +95,7 @@ public class ChessMoves extends ChessPiece {
 		p.setValues(position.getRow() + 1, position.getColumn() - 1);
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
-			p.setValues(p.getRow() + 1, p.getColumn()-1);
+			p.setValues(p.getRow() + 1, p.getColumn() - 1);
 		}
 
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
@@ -112,6 +115,7 @@ public class ChessMoves extends ChessPiece {
 		}
 		return mat;
 	}
+
 	@Override
 	public boolean[][] possibleMoves() {
 		// TODO Auto-generated method stub
